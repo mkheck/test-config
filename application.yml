@@ -1,0 +1,44 @@
+# COMMON APPLICATION PROPERTIES
+
+server:
+  # start services on random port by default
+  port: 0
+  # The stop processing uses a timeout which provides a grace period during which existing requests 
+  # will be allowed to complete but no new requests will be permitted
+  shutdown: graceful
+
+# Logging
+logging:
+  level:
+    org:
+      springframework: INFO
+
+# Metrics
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  info:
+    env:
+      enabled: true
+
+# Identification
+info:
+  app:
+    name: ${spring.application.name}
+
+# Eureka
+eureka:
+  client:
+    healthcheck:
+      enabled: true
